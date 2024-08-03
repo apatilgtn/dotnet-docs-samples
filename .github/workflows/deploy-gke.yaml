@@ -6,8 +6,8 @@ on:
       - main
 
 env:
-  PROJECT_ID: vital-scout-430808-k8
-  PROJECT_NUMBER: 1039037619425
+  PROJECT_ID: 'vital-scout-430808-k8'
+  PROJECT_NUMBER: '1039037619425'
 
   CLUSTER: clouddemo-linux
   CLUSTER_ZONE: us-central1-a
