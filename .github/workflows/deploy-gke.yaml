@@ -37,8 +37,8 @@ jobs:
       with:
         create_credentials_file: true
         token_format: access_token
-        workload_identity_provider: projects/${{ env.1039037619425 }}/locations/global/workloadIdentityPools/github-actions/providers/github-actions-oidc
-        service_account: github-actions-workflow@${{ env.vital-scout-430808-k8 }}.iam.gserviceaccount.com
+        workload_identity_provider: projects/${{ env.PROJECT_NUMBER }}/locations/global/workloadIdentityPools/github-actions/providers/github-actions-oidc
+        service_account: github-actions-workflow@${{ env.PROJECT_ID }}.iam.gserviceaccount.com
 
     - name: Connect to Artifact Registry
       run: |-
@@ -63,7 +63,7 @@ jobs:
     # Build the Docker image and push it to Artifact Registry
     #
     - name: Create image tag
-      run: echo "IMAGE_TAG=${{ env.REPOSITORY_REGION }}-docker.pkg.dev/${{ env.vital-scout-430808-k8 }}/${{ env.REPOSITORY }}/${{ env.IMAGE }}:$GITHUB_SHA" >> $GITHUB_ENV
+      run: echo "IMAGE_TAG=${{ env.REPOSITORY_REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE }}:$GITHUB_SHA" >> $GITHUB_ENV
 
     - name: Lock image version in deployment.yaml
       run: sed -i 's|CLOUDDEMO_IMAGE|${{ env.IMAGE_TAG }}|g' applications/clouddemo/netcore/deployment.yaml
